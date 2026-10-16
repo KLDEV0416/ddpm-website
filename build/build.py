@@ -253,7 +253,7 @@ html = f'''<!doctype html>
           <dl class="reach">
             <dt data-i18n="c.email">Email</dt><dd><a href="mailto:info@ddpm.com.my">info@ddpm.com.my</a></dd>
             <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd>[+60 X-XXX XXXX]</dd>
-            <dt data-i18n="c.office">Office</dt><dd>[Address], Malaysia</dd>
+            <dt data-i18n="c.office">Office</dt><dd><dt data-i18n="c.office">Office</dt><dd>No 14, Jalan Berlian 14,<br>Taman Berlian SG, Jelok,<br>43000 Kajang, Selangor, Malaysia</dd>
           </dl>
         </div>
         <form class="enquiry" id="enquiry" novalidate>
@@ -281,9 +281,10 @@ html = f'''<!doctype html>
 </body>
 </html>
 '''
-open(os.path.join(ROOT, 'site/index.html'), 'w').write(html)
+
+open(os.path.join(ROOT, 'site/index.html'), 'w', encoding='utf-8').write(html)
 js = 'window.DDPM_TEXT = ' + json.dumps({k: {'en': v[0], 'ms': v[1]} for k, v in T.items()}, ensure_ascii=False, indent=0) + ';\n'
-open(os.path.join(ROOT, 'site/assets/i18n.js'), 'w').write(js)
-open(os.path.join(ROOT, 'site/favicon.svg'), 'w').write(LOGO_MARK.replace(' aria-hidden="true"', ' xmlns="http://www.w3.org/2000/svg"'))
+open(os.path.join(ROOT, 'site/assets/i18n.js'), 'w', encoding='utf-8').write(js)
+open(os.path.join(ROOT, 'site/favicon.svg'), 'w', encoding='utf-8').write(LOGO_MARK.replace(' aria-hidden="true"', ' xmlns="http://www.w3.org/2000/svg"'))
 missing = [k for k in re.findall(r'data-i18n(?:-label|-ph)?="([^"]+)"', html) if k not in T]
 print('built', len(html), 'bytes; missing keys:', missing)

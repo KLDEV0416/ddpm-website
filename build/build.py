@@ -1,14 +1,14 @@
 """Builds site/index.html and site/assets/i18n.js for the DDP Management website.
 Text lives in T below as (English, Bahasa Melayu). Run: python build/build.py"""
 import json, os, re
-from art import scene_members, scene_dividend, scene_loan, avatar
+from art import scene_members, scene_dividend, scene_loan, scene_payments, avatar
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 T = {
   'title': ('DDP Management: koperasi systems for Malaysia', 'DDP Management: sistem koperasi untuk Malaysia'),
-  'desc': ('DDP Management helps Malaysian koperasi go digital: member management, online loan applications, live dividend estimates and one app for every member.',
-           'DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli.'),
+  'desc': ('DDP Management helps Malaysian koperasi go digital: member management, online loan applications, Angkasa deduction integration, online payments, live dividend estimates and one app for every member.',
+           'DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, integrasi potongan Angkasa, bayaran dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli.'),
   'nav.solutions': ('Solutions', 'Penyelesaian'),
   'nav.dividend': ('Dividend estimator', 'Anggaran dividen'),
   'nav.how': ('How it works', 'Cara ia berfungsi'),
@@ -26,6 +26,9 @@ T = {
   's3.h': ('Loan applications without the paperwork', 'Permohonan pinjaman tanpa kertas'),
   's3.p': ('Members apply online, staff review and approve, and everyone can follow the status as it moves.',
            'Ahli memohon dalam talian, kakitangan menyemak dan meluluskan, dan semua orang boleh mengikuti status permohonan.'),
+  's4.h': ('Every ringgit, matched automatically', 'Setiap ringgit, dipadankan secara automatik'),
+  's4.p': ('Angkasa salary deductions and members\' online payments go straight to the right account, with receipts and no manual matching.',
+           'Potongan gaji Angkasa dan bayaran dalam talian oleh ahli terus masuk ke akaun yang betul, dengan resit dan tanpa padanan manual.'),
   'slide.prev': ('Previous slide', 'Slaid sebelumnya'),
   'slide.next': ('Next slide', 'Slaid seterusnya'),
   'slide.pause': ('Pause slides', 'Jeda slaid'),
@@ -50,13 +53,19 @@ T = {
   'f4.h': ('One app for every member', 'Satu aplikasi untuk semua ahli'),
   'f4.p': ('Web and mobile app in Bahasa Melayu, English and Tamil. Announcements reach every member, and help requests reach the right person in the office.',
            'Aplikasi web dan mudah alih dalam Bahasa Melayu, Inggeris dan Tamil. Pengumuman sampai kepada setiap ahli, dan permintaan bantuan sampai kepada orang yang betul di pejabat.'),
+  'f5.h': ('Angkasa deduction integration', 'Integrasi potongan Angkasa'),
+  'f5.p': ('Import the monthly Angkasa deduction file and match every payment to the right member, loan and share account automatically. Anything that does not match is flagged for staff to review.',
+           'Import fail potongan bulanan Angkasa dan padankan setiap bayaran kepada ahli, pinjaman dan akaun syer yang betul secara automatik. Apa-apa yang tidak sepadan ditandakan untuk disemak oleh kakitangan.'),
+  'f6.h': ('Pay online', 'Bayar dalam talian'),
+  'f6.p': ('Members pay fees, share top-ups and loan instalments from their phone with FPX online banking or card. Each payment is recorded in their account with an instant receipt.',
+           'Ahli membayar yuran, tambahan syer dan ansuran pinjaman melalui telefon menggunakan perbankan dalam talian FPX atau kad. Setiap bayaran direkodkan dalam akaun mereka dengan resit serta-merta.'),
   'also.h': ('Also included', 'Turut disediakan'),
   'also.1': ('Announcements with notifications', 'Pengumuman dengan notifikasi'),
   'also.2': ('Member help desk and account unlock', 'Meja bantuan ahli dan buka kunci akaun'),
   'also.3': ('Staff roles and a full activity log', 'Peranan kakitangan dan log aktiviti penuh'),
   'also.4': ('Hosting in Malaysia with daily backups', 'Hos di Malaysia dengan sandaran harian'),
   'also.5': ('Request to leave, with open-loan checks', 'Permohonan berhenti, dengan semakan pinjaman tertunggak'),
-  'also.6': ('Angkasa salary deductions (coming soon)', 'Potongan gaji Angkasa (akan datang)'),
+  'also.6': ('Receipts and payment history for members', 'Resit dan sejarah bayaran untuk ahli'),
 
   'div.h': ('Try the dividend estimator', 'Cuba anggaran dividen'),
   'div.p': ('Move the rate and watch the payout change. In the DDPM system the same estimate runs on each member\'s actual average share balance.',
@@ -133,13 +142,15 @@ ICONS = {
   'f2': '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/><path d="M14 17l2 2 3-4"/>',
   'f3': '<path d="M4 19V9M10 19V5M16 19v-7M3 21h18"/><path d="M14 7l3-3 3 3"/>',
   'f4': '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/><circle cx="4" cy="8" r="1.5"/><circle cx="20" cy="8" r="1.5"/><circle cx="4" cy="15" r="1.5"/><circle cx="20" cy="15" r="1.5"/>',
+  'f5': '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/><path d="M8 16h3"/><path d="M14 15.5l1.5 1.5 3-3.5"/>',
+  'f6': '<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h3"/><circle cx="17" cy="15" r="1.2"/>',
 }
 def icon(k):
     return f'<svg viewBox="0 0 24 24" class="ico" aria-hidden="true">{ICONS[k]}</svg>'
 
-slides = [('s1', scene_members()), ('s2', scene_dividend()), ('s3', scene_loan())]
+slides = [('s1', scene_members()), ('s4', scene_payments()), ('s2', scene_dividend()), ('s3', scene_loan())]
 slides_html = ''.join(f'''
-      <div class="slide{' active' if i == 0 else ''}" data-slide="{i}" aria-roledescription="slide" aria-label="{i+1} / 3"{'' if i == 0 else ' aria-hidden="true"'}>
+      <div class="slide{' active' if i == 0 else ''}" data-slide="{i}" aria-roledescription="slide" aria-label="{i+1} / {len(slides)}"{'' if i == 0 else ' aria-hidden="true"'}>
         <div class="wrap slide-grid">
           <div class="slide-text">
             {tx(k + '.h', 'h1' if i == 0 else 'h2', 'class="slide-h"')}
@@ -189,7 +200,7 @@ html = f'''<!doctype html>
       </div>
       <div class="wrap controls">
         <button type="button" class="ctl" id="prev" data-i18n-label="slide.prev" aria-label="{T['slide.prev'][0]}"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <div class="dots" id="dots">{''.join(f'<button type="button" class="dot{" on" if i == 0 else ""}" data-go="{i}" data-i18n-label="slide.go" aria-label="{T["slide.go"][0]} {i+1}" aria-current="{"true" if i == 0 else "false"}"></button>' for i in range(3))}</div>
+        <div class="dots" id="dots">{''.join(f'<button type="button" class="dot{" on" if i == 0 else ""}" data-go="{i}" data-i18n-label="slide.go" aria-label="{T["slide.go"][0]} {i+1}" aria-current="{"true" if i == 0 else "false"}"></button>' for i in range(len(slides)))}</div>
         <button type="button" class="ctl" id="next" data-i18n-label="slide.next" aria-label="{T['slide.next'][0]}"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
         <button type="button" class="ctl" id="pause" data-i18n-label="slide.pause" aria-label="{T['slide.pause'][0]}" aria-pressed="false"><svg viewBox="0 0 24 24" class="i-pause"><path d="M9 6v12M15 6v12"/></svg><svg viewBox="0 0 24 24" class="i-play"><path d="M8 5l11 7-11 7z"/></svg></button>
       </div>
@@ -201,7 +212,7 @@ html = f'''<!doctype html>
       <div class="wrap">
         <div class="head">{tx('sol.h', 'h2')}{tx('sol.p', 'p')}</div>
         <div class="features">
-          {''.join(f'<article class="feature" data-f="{k}"><div class="badge">{icon(k)}</div>{tx(k + ".h", "h3")}{tx(k + ".p", "p")}</article>' for k in ['f1', 'f2', 'f3', 'f4'])}
+          {''.join(f'<article class="feature" data-f="{k}"><div class="badge">{icon(k)}</div>{tx(k + ".h", "h3")}{tx(k + ".p", "p")}</article>' for k in ['f1', 'f2', 'f5', 'f6', 'f3', 'f4'])}
         </div>
         <div class="also">{tx('also.h', 'h3')}<ul>{''.join(f'<li>{tx(f"also.{i}")}</li>' for i in range(1, 7))}</ul></div>
       </div>
@@ -252,8 +263,8 @@ html = f'''<!doctype html>
         <div>{tx('contact.h', 'h2')}{tx('contact.p', 'p')}
           <dl class="reach">
             <dt data-i18n="c.email">Email</dt><dd><a href="mailto:info@ddpm.com.my">info@ddpm.com.my</a></dd>
-            <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd><a href="https://wa.me/60126915794">+60 12-691 5794</a></dd>
-            <dt data-i18n="c.office">Office</dt><dd><dt data-i18n="c.office">Office</dt><dd>No 14, Jalan Berlian 14,<br>Taman Berlian SG, Jelok,<br>43000 Kajang, Selangor, Malaysia</dd>
+            <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd><a href="tel:+60126915794">+60 12-691 5794</a></dd>
+            <dt data-i18n="c.office">Office</dt><dd>No 14, Jalan Berlian 14,<br>Taman Berlian SG, Jelok,<br>43000 Kajang, Selangor, Malaysia</dd>
           </dl>
         </div>
         <form class="enquiry" id="enquiry" novalidate>
@@ -281,7 +292,6 @@ html = f'''<!doctype html>
 </body>
 </html>
 '''
-
 open(os.path.join(ROOT, 'site/index.html'), 'w', encoding='utf-8').write(html)
 js = 'window.DDPM_TEXT = ' + json.dumps({k: {'en': v[0], 'ms': v[1]} for k, v in T.items()}, ensure_ascii=False, indent=0) + ';\n'
 open(os.path.join(ROOT, 'site/assets/i18n.js'), 'w', encoding='utf-8').write(js)

@@ -4,8 +4,8 @@ window.DDPM_TEXT = {
 "ms": "DDP Management: sistem koperasi untuk Malaysia"
 },
 "desc": {
-"en": "DDP Management helps Malaysian koperasi go digital: member management, online loan applications, live dividend estimates and one app for every member.",
-"ms": "DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli."
+"en": "DDP Management helps Malaysian koperasi go digital: member management, online loan applications, Angkasa deduction integration, online payments, live dividend estimates and one app for every member.",
+"ms": "DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, integrasi potongan Angkasa, bayaran dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli."
 },
 "nav.solutions": {
 "en": "Solutions",
@@ -58,6 +58,14 @@ window.DDPM_TEXT = {
 "s3.p": {
 "en": "Members apply online, staff review and approve, and everyone can follow the status as it moves.",
 "ms": "Ahli memohon dalam talian, kakitangan menyemak dan meluluskan, dan semua orang boleh mengikuti status permohonan."
+},
+"s4.h": {
+"en": "Every ringgit, matched automatically",
+"ms": "Setiap ringgit, dipadankan secara automatik"
+},
+"s4.p": {
+"en": "Angkasa salary deductions and members' online payments go straight to the right account, with receipts and no manual matching.",
+"ms": "Potongan gaji Angkasa dan bayaran dalam talian oleh ahli terus masuk ke akaun yang betul, dengan resit dan tanpa padanan manual."
 },
 "slide.prev": {
 "en": "Previous slide",
@@ -123,6 +131,22 @@ window.DDPM_TEXT = {
 "en": "Web and mobile app in Bahasa Melayu, English and Tamil. Announcements reach every member, and help requests reach the right person in the office.",
 "ms": "Aplikasi web dan mudah alih dalam Bahasa Melayu, Inggeris dan Tamil. Pengumuman sampai kepada setiap ahli, dan permintaan bantuan sampai kepada orang yang betul di pejabat."
 },
+"f5.h": {
+"en": "Angkasa deduction integration",
+"ms": "Integrasi potongan Angkasa"
+},
+"f5.p": {
+"en": "Import the monthly Angkasa deduction file and match every payment to the right member, loan and share account automatically. Anything that does not match is flagged for staff to review.",
+"ms": "Import fail potongan bulanan Angkasa dan padankan setiap bayaran kepada ahli, pinjaman dan akaun syer yang betul secara automatik. Apa-apa yang tidak sepadan ditandakan untuk disemak oleh kakitangan."
+},
+"f6.h": {
+"en": "Pay online",
+"ms": "Bayar dalam talian"
+},
+"f6.p": {
+"en": "Members pay fees, share top-ups and loan instalments from their phone with FPX online banking or card. Each payment is recorded in their account with an instant receipt.",
+"ms": "Ahli membayar yuran, tambahan syer dan ansuran pinjaman melalui telefon menggunakan perbankan dalam talian FPX atau kad. Setiap bayaran direkodkan dalam akaun mereka dengan resit serta-merta."
+},
 "also.h": {
 "en": "Also included",
 "ms": "Turut disediakan"
@@ -148,8 +172,8 @@ window.DDPM_TEXT = {
 "ms": "Permohonan berhenti, dengan semakan pinjaman tertunggak"
 },
 "also.6": {
-"en": "Angkasa salary deductions (coming soon)",
-"ms": "Potongan gaji Angkasa (akan datang)"
+"en": "Receipts and payment history for members",
+"ms": "Resit dan sejarah bayaran untuk ahli"
 },
 "div.h": {
 "en": "Try the dividend estimator",

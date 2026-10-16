@@ -252,7 +252,7 @@ html = f'''<!doctype html>
         <div>{tx('contact.h', 'h2')}{tx('contact.p', 'p')}
           <dl class="reach">
             <dt data-i18n="c.email">Email</dt><dd><a href="mailto:info@ddpm.com.my">info@ddpm.com.my</a></dd>
-            <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd>[+60 X-XXX XXXX]</dd>
+            <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd>[+60 12-691 5794]</dd>
             <dt data-i18n="c.office">Office</dt><dd><dt data-i18n="c.office">Office</dt><dd>No 14, Jalan Berlian 14,<br>Taman Berlian SG, Jelok,<br>43000 Kajang, Selangor, Malaysia</dd>
           </dl>
         </div>

@@ -86,9 +86,9 @@
     const f = Object.fromEntries(new FormData(form));
     if (!f.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim()) || !f.message.trim()) { err.hidden = false; return; }
     err.hidden = true;
-    const subject = `Demo request: ${f.koperasi.trim() || f.name.trim()}`;
-    const body = `${f.message.trim()}\n\nName: ${f.name.trim()}\nKoperasi: ${f.koperasi.trim() || '-'}\nMembers: ${f.members.trim() || '-'}\nEmail: ${f.email.trim()}`;
-    window.location.href = `mailto:info@ddpm.com.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const subject = `Enquiry: ${(f.org || '').trim() || f.name.trim()}`;
+    const body = `${f.message.trim()}\n\nName: ${f.name.trim()}\nOrganisation: ${(f.org || '').trim() || '-'}\nPhone: ${(f.phone || '').trim() || '-'}\nEmail: ${f.email.trim()}`;
+    window.location.href = `mailto:Kumaravel@ddpm.com.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
   // ---------- start ----------

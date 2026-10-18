@@ -1,75 +1,96 @@
 """Builds site/index.html and site/assets/i18n.js for the DDP Management website.
 Text lives in T below as (English, Bahasa Melayu). Run: python build/build.py"""
 import json, os, re
-from art import scene_members, scene_dividend, scene_loan, scene_payments, avatar
+from art import scene_members, scene_dividend, scene_loan, scene_payments, brand
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 T = {
-  'title': ('DDP Management: koperasi systems for Malaysia', 'DDP Management: sistem koperasi untuk Malaysia'),
-  'desc': ('DDP Management helps Malaysian koperasi go digital: member management, online loan applications, Angkasa deduction integration, online payments, live dividend estimates and one app for every member.',
-           'DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, integrasi potongan Angkasa, bayaran dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli.'),
-  'nav.solutions': ('Solutions', 'Penyelesaian'),
-  'nav.dividend': ('Dividend estimator', 'Anggaran dividen'),
-  'nav.how': ('How it works', 'Cara ia berfungsi'),
+  'title': ('DDP Management: IT delivery and business automation for SMEs and financial services', 'DDP Management: penyampaian IT dan automasi perniagaan untuk PKS dan perkhidmatan kewangan'),
+  'desc': ('DDP Management replaces paper-based, manual operations with automated digital platforms for SMEs and financial services companies in Malaysia, including a complete koperasi digital operations platform.',
+           'DDP Management menggantikan operasi manual berasaskan kertas dengan platform digital automatik untuk PKS dan syarikat perkhidmatan kewangan di Malaysia, termasuk platform operasi digital koperasi yang lengkap.'),
+  'brand.tag': ('IT Delivery & Business Automation', 'Penyampaian IT & Automasi Perniagaan'),
+  'nav.services': ('Services', 'Perkhidmatan'),
+  'nav.koperasi': ('Koperasi platform', 'Platform koperasi'),
+  'nav.how': ('How we work', 'Cara kami bekerja'),
   'nav.contact': ('Contact', 'Hubungi'),
-  'cta.demo': ('Book a free demo', 'Tempah demo percuma'),
-  'cta.how': ('See how it works', 'Lihat cara ia berfungsi'),
+  'cta.talk': ('Talk to us', 'Hubungi kami'),
+  'cta.services': ('See what we do', 'Lihat perkhidmatan kami'),
   'menu': ('Menu', 'Menu'),
 
-  's1.h': ('Every member, one koperasi app', 'Semua ahli, satu aplikasi koperasi'),
-  's1.p': ('Members check their membership, apply for loans and read announcements on their phone. Your office sees everything in one place.',
-           'Ahli menyemak keahlian, memohon pinjaman dan membaca pengumuman di telefon. Pejabat anda melihat semuanya di satu tempat.'),
-  's2.h': ('See the dividend before the meeting', 'Lihat dividen sebelum mesyuarat'),
-  's2.p': ('Live dividend estimates let the board compare rates in minutes and decide with confidence.',
-           'Anggaran dividen secara langsung membolehkan lembaga membandingkan kadar dalam beberapa minit dan membuat keputusan dengan yakin.'),
-  's3.h': ('Loan applications without the paperwork', 'Permohonan pinjaman tanpa kertas'),
-  's3.p': ('Members apply online, staff review and approve, and everyone can follow the status as it moves.',
-           'Ahli memohon dalam talian, kakitangan menyemak dan meluluskan, dan semua orang boleh mengikuti status permohonan.'),
-  's4.h': ('Every ringgit, matched automatically', 'Setiap ringgit, dipadankan secara automatik'),
-  's4.p': ('Angkasa salary deductions and members\' online payments go straight to the right account, with receipts and no manual matching.',
-           'Potongan gaji Angkasa dan bayaran dalam talian oleh ahli terus masuk ke akaun yang betul, dengan resit dan tanpa padanan manual.'),
+  's1.h': ('Replace manual operations with automated digital platforms', 'Gantikan operasi manual dengan platform digital automatik'),
+  's1.p': ('Purpose-built for SMEs and financial services companies in Malaysia. We design, build and support systems that cut cost, reduce error and free your people to focus on customers instead of paperwork.',
+           'Dibina khusus untuk PKS dan syarikat perkhidmatan kewangan di Malaysia. Kami mereka bentuk, membina dan menyokong sistem yang mengurangkan kos, mengurangkan kesilapan dan membebaskan kakitangan anda untuk memberi tumpuan kepada pelanggan, bukan kertas kerja.'),
+  's2.h': ('A complete digital platform for koperasi', 'Platform digital lengkap untuk koperasi'),
+  's2.p': ('Member management, share capital and subscriptions, nominee records, PDPA consent, loans, dividends and Angkasa deductions, in one system members can use from their phone.',
+           'Pengurusan ahli, modal syer dan yuran, rekod penama, persetujuan PDPA, pinjaman, dividen dan potongan Angkasa, dalam satu sistem yang boleh digunakan ahli melalui telefon.'),
+  's3.h': ('Every payment matched automatically', 'Setiap bayaran dipadankan secara automatik'),
+  's3.p': ('Salary deductions, online payments and receipts reconciled without manual matching, with a full record of every transaction.',
+           'Potongan gaji, bayaran dalam talian dan resit dipadankan tanpa kerja manual, dengan rekod lengkap setiap transaksi.'),
+  's4.h': ('Results your committee can see', 'Hasil yang dapat dilihat oleh jawatankuasa anda'),
+  's4.p': ('More than 100 business processes automated and over RM1 million in manpower cost savings delivered through automation.',
+           'Lebih 100 proses perniagaan diautomasikan dan lebih RM1 juta penjimatan kos tenaga kerja melalui automasi.'),
   'slide.prev': ('Previous slide', 'Slaid sebelumnya'),
   'slide.next': ('Next slide', 'Slaid seterusnya'),
   'slide.pause': ('Pause slides', 'Jeda slaid'),
   'slide.play': ('Play slides', 'Main slaid'),
   'slide.go': ('Show slide', 'Tunjuk slaid'),
 
-  'mission': ('Our goal is simple: every koperasi in Malaysia, digital, so members are served faster and boards decide with real numbers.',
-              'Matlamat kami mudah: setiap koperasi di Malaysia menjadi digital, supaya ahli dilayan lebih pantas dan lembaga membuat keputusan berdasarkan angka sebenar.'),
+  'stat1': ('Business processes automated across financial services engagements', 'Proses perniagaan diautomasikan dalam projek perkhidmatan kewangan'),
+  'stat2': ('Manpower cost savings delivered through automation', 'Penjimatan kos tenaga kerja melalui automasi'),
+  'stat3': ('Every platform is built around the governance, data-protection and reporting standards Malaysia\'s financial-services regulators expect, so compliance is designed in, not retrofitted.',
+            'Setiap platform dibina berdasarkan piawaian tadbir urus, perlindungan data dan pelaporan yang diharapkan oleh pengawal selia perkhidmatan kewangan Malaysia, jadi pematuhan direka sejak awal, bukan ditambah kemudian.'),
 
-  'sol.h': ('Everything your koperasi runs on, in one system', 'Semua keperluan koperasi anda, dalam satu sistem'),
-  'sol.p': ('Built for how Malaysian koperasi really work, including the paper forms that still come into the office.',
-            'Dibina mengikut cara koperasi di Malaysia bekerja, termasuk borang kertas yang masih diterima di pejabat.'),
-  'f1.h': ('Easy member management', 'Pengurusan ahli mudah'),
-  'f1.p': ('Register members online or from paper forms. Keep IC, employer, bank details, nominees and status in one record, and find anyone in seconds.',
-           'Daftar ahli dalam talian atau daripada borang kertas. Simpan IC, majikan, maklumat bank, penama dan status dalam satu rekod, dan cari sesiapa sahaja dalam beberapa saat.'),
-  'f2.h': ('Easy loan applications', 'Permohonan pinjaman mudah'),
-  'f2.p': ('Members apply from their phone; staff key in paper forms. Every application moves through review and approval with a clear record of who decided and why.',
-           'Ahli memohon melalui telefon; kakitangan memasukkan borang kertas. Setiap permohonan melalui semakan dan kelulusan dengan rekod jelas siapa yang membuat keputusan dan sebabnya.'),
-  'f3.h': ('Live dividend estimation', 'Anggaran dividen secara langsung'),
-  'f3.p': ('Try different dividend rates on your real share balances and see the total payout and each member\'s dividend instantly. The board decides faster, with confidence.',
-           'Cuba kadar dividen berbeza pada baki syer sebenar dan lihat jumlah bayaran serta dividen setiap ahli serta-merta. Lembaga membuat keputusan lebih pantas dan yakin.'),
-  'f4.h': ('One app for every member', 'Satu aplikasi untuk semua ahli'),
-  'f4.p': ('Web and mobile app in Bahasa Melayu, English and Tamil. Announcements reach every member, and help requests reach the right person in the office.',
-           'Aplikasi web dan mudah alih dalam Bahasa Melayu, Inggeris dan Tamil. Pengumuman sampai kepada setiap ahli, dan permintaan bantuan sampai kepada orang yang betul di pejabat.'),
-  'f5.h': ('Angkasa deduction integration', 'Integrasi potongan Angkasa'),
-  'f5.p': ('Import the monthly Angkasa deduction file and match every payment to the right member, loan and share account automatically. Anything that does not match is flagged for staff to review.',
-           'Import fail potongan bulanan Angkasa dan padankan setiap bayaran kepada ahli, pinjaman dan akaun syer yang betul secara automatik. Apa-apa yang tidak sepadan ditandakan untuk disemak oleh kakitangan.'),
-  'f6.h': ('Pay online', 'Bayar dalam talian'),
-  'f6.p': ('Members pay fees, share top-ups and loan instalments from their phone with FPX online banking or card. Each payment is recorded in their account with an instant receipt.',
-           'Ahli membayar yuran, tambahan syer dan ansuran pinjaman melalui telefon menggunakan perbankan dalam talian FPX atau kad. Setiap bayaran direkodkan dalam akaun mereka dengan resit serta-merta.'),
-  'also.h': ('Also included', 'Turut disediakan'),
-  'also.1': ('Announcements with notifications', 'Pengumuman dengan notifikasi'),
-  'also.2': ('Member help desk and account unlock', 'Meja bantuan ahli dan buka kunci akaun'),
-  'also.3': ('Staff roles and a full activity log', 'Peranan kakitangan dan log aktiviti penuh'),
-  'also.4': ('Hosting in Malaysia with daily backups', 'Hos di Malaysia dengan sandaran harian'),
-  'also.5': ('Request to leave, with open-loan checks', 'Permohonan berhenti, dengan semakan pinjaman tertunggak'),
-  'also.6': ('Receipts and payment history for members', 'Resit dan sejarah bayaran untuk ahli'),
+  'svc.h': ('What we do', 'Apa yang kami lakukan'),
+  'svc.p': ('From member management to claims-adjacent workflows, we take operations from paper to dependable digital platforms.',
+            'Daripada pengurusan ahli hingga aliran kerja berkaitan tuntutan, kami membawa operasi daripada kertas kepada platform digital yang boleh dipercayai.'),
+  'v1.h': ('Koperasi Digital Operations Platform', 'Platform Operasi Digital Koperasi'),
+  'v1.p': ('A dedicated platform covering member management, share capital and subscriptions, statutory nominee records and PDPA consent, replacing manual, paper-based koperasi administration.',
+           'Platform khusus merangkumi pengurusan ahli, modal syer dan yuran, rekod penama berkanun dan persetujuan PDPA, menggantikan pentadbiran koperasi manual berasaskan kertas.'),
+  'v2.h': ('Business Process Automation', 'Automasi Proses Perniagaan'),
+  'v2.p': ('End-to-end automation of high-volume, manual workflows across insurance and koperasi operations, cutting turnaround time and reducing dependence on manual headcount.',
+           'Automasi menyeluruh aliran kerja manual bervolum tinggi dalam operasi insurans dan koperasi, memendekkan masa pemprosesan dan mengurangkan kebergantungan kepada tenaga kerja manual.'),
+  'v3.h': ('Digital System Implementation', 'Pelaksanaan Sistem Digital'),
+  'v3.p': ('Full-cycle implementation of digital systems, from requirements through go-live, sized to fit real operational capacity and budget, not a generic template.',
+           'Pelaksanaan sistem digital kitaran penuh, daripada keperluan hingga mula guna, disesuaikan dengan kapasiti operasi dan bajet sebenar, bukan templat umum.'),
+  'v4.h': ('Business-as-Usual Support', 'Sokongan Operasi Harian'),
+  'v4.p': ('Ongoing support and system enhancements after go-live, flexing with day-to-day operational needs as your organisation and its customer or member base grow.',
+           'Sokongan berterusan dan penambahbaikan sistem selepas mula guna, mengikut keperluan operasi harian seiring pertumbuhan organisasi serta pelanggan atau ahli anda.'),
+  'v5.h': ('Process Re-engineering & Digitalisation', 'Penyusunan Semula Proses & Pendigitalan'),
+  'v5.p': ('We redesign a process before we automate it, so digitalisation removes waste and manual steps rather than simply moving paper forms onto a screen.',
+           'Kami mereka bentuk semula proses sebelum mengautomasikannya, supaya pendigitalan menghapuskan pembaziran dan langkah manual, bukan sekadar memindahkan borang kertas ke skrin.'),
+
+  'who.h': ('Who we work with', 'Siapa yang kami bantu'),
+  'who.1h': ('SMEs', 'PKS'), 'who.1p': ('Approvals, records and reporting moved off spreadsheets and paper.', 'Kelulusan, rekod dan laporan dipindahkan daripada hamparan dan kertas.'),
+  'who.2h': ('Insurance', 'Insurans'), 'who.2p': ('High-volume, claims-adjacent workflows automated end to end.', 'Aliran kerja berkaitan tuntutan bervolum tinggi diautomasikan sepenuhnya.'),
+  'who.3h': ('Koperasi', 'Koperasi'), 'who.3p': ('Members, shares, loans, dividends and Angkasa deductions in one platform.', 'Ahli, syer, pinjaman, dividen dan potongan Angkasa dalam satu platform.'),
+  'who.4h': ('Financial services', 'Perkhidmatan kewangan'), 'who.4p': ('Systems built around governance, data protection and regulatory reporting.', 'Sistem dibina berasaskan tadbir urus, perlindungan data dan pelaporan kawal selia.'),
+
+  'why.h': ('Why it works', 'Mengapa ia berkesan'),
+  'why.p': ('We pair hands-on business analysis with delivery discipline. Every engagement starts by mapping your actual processes and regulatory obligations, then automates only what genuinely reduces cost and risk. The result is a system your committee can approve with confidence and your staff can actually run.',
+            'Kami menggabungkan analisis perniagaan secara langsung dengan disiplin penyampaian. Setiap projek bermula dengan memetakan proses sebenar dan kewajipan kawal selia anda, kemudian mengautomasikan hanya perkara yang benar-benar mengurangkan kos dan risiko. Hasilnya, sistem yang boleh diluluskan oleh jawatankuasa dengan yakin dan benar-benar boleh digunakan oleh kakitangan anda.'),
+  'how.h': ('How we work', 'Cara kami bekerja'),
+  'how.1h': ('Map', 'Petakan'), 'how.1p': ('We map your actual processes, data and regulatory obligations with the people who do the work.', 'Kami memetakan proses, data dan kewajipan kawal selia sebenar bersama mereka yang melakukan kerja tersebut.'),
+  'how.2h': ('Redesign', 'Reka semula'), 'how.2p': ('We remove waste and manual steps first, and agree where automation pays off.', 'Kami menghapuskan pembaziran dan langkah manual dahulu, dan bersetuju di mana automasi memberi pulangan.'),
+  'how.3h': ('Build and implement', 'Bina dan laksana'), 'how.3p': ('We deliver in stages, test with your team, train your staff and go live alongside existing processes.', 'Kami menyampaikan secara berperingkat, menguji bersama pasukan anda, melatih kakitangan dan mula guna seiring proses sedia ada.'),
+  'how.4h': ('Support and improve', 'Sokong dan tambah baik'), 'how.4p': ('Business-as-usual support and enhancements as your organisation grows.', 'Sokongan operasi harian dan penambahbaikan seiring pertumbuhan organisasi anda.'),
+
+  'kp.h': ('Koperasi Digital Operations Platform', 'Platform Operasi Digital Koperasi'),
+  'kp.p': ('Our flagship platform for koperasi: everything the office and the board run on, with a mobile app for every member. Modules are switched on in phases, as the koperasi is ready.',
+           'Platform utama kami untuk koperasi: semua yang diperlukan pejabat dan lembaga, dengan aplikasi mudah alih untuk setiap ahli. Modul dihidupkan secara berperingkat, apabila koperasi bersedia.'),
+  'k1': ('Member management and registration', 'Pengurusan dan pendaftaran ahli'),
+  'k2': ('Share capital and subscriptions', 'Modal syer dan yuran'),
+  'k3': ('Statutory nominee records and PDPA consent', 'Rekod penama berkanun dan persetujuan PDPA'),
+  'k4': ('Loan applications, accounts and early settlement', 'Permohonan, akaun dan penyelesaian awal pinjaman'),
+  'k5': ('Live dividend estimation for the board', 'Anggaran dividen secara langsung untuk lembaga'),
+  'k6': ('Angkasa salary deduction integration', 'Integrasi potongan gaji Angkasa'),
+  'k7': ('Online payment by FPX', 'Bayaran dalam talian melalui FPX'),
+  'k8': ('Member app in BM, English and Tamil', 'Aplikasi ahli dalam BM, Inggeris dan Tamil'),
+  'k9': ('Support desk, announcements and audit trail', 'Meja bantuan, pengumuman dan jejak audit'),
 
   'div.h': ('Try the dividend estimator', 'Cuba anggaran dividen'),
-  'div.p': ('Move the rate and watch the payout change. In the DDPM system the same estimate runs on each member\'s actual average share balance.',
-            'Gerakkan kadar dan lihat bayaran berubah. Dalam sistem DDPM, anggaran yang sama dikira berdasarkan purata baki syer sebenar setiap ahli.'),
+  'div.p': ('Move the rate and watch the payout change. In the platform the same estimate runs on each member\'s actual share balance, so the board decides faster.',
+            'Gerakkan kadar dan lihat bayaran berubah. Dalam platform, anggaran yang sama dikira berdasarkan baki syer sebenar setiap ahli, supaya lembaga membuat keputusan lebih pantas.'),
   'div.capital': ('Total share capital (RM)', 'Jumlah modal syer (RM)'),
   'div.members': ('Number of members', 'Bilangan ahli'),
   'div.rate': ('Dividend rate', 'Kadar dividen'),
@@ -78,90 +99,61 @@ T = {
   'div.compare': ('Compare rates', 'Bandingkan kadar'),
   'div.note': ('Example figures for illustration.', 'Angka contoh untuk ilustrasi.'),
 
-  'how.h': ('From paper to digital in four steps', 'Daripada kertas ke digital dalam empat langkah'),
-  'how.1h': ('Free consultation', 'Konsultasi percuma'),
-  'how.1p': ('We visit your koperasi, look at your forms and processes, and show you a working demo.',
-             'Kami melawat koperasi anda, meneliti borang dan proses, dan menunjukkan demo sebenar.'),
-  'how.2h': ('Set-up and data transfer', 'Persediaan dan pemindahan data'),
-  'how.2p': ('We configure the system for your by-laws and move your member and loan records in.',
-             'Kami menyediakan sistem mengikut undang-undang kecil anda dan memindahkan rekod ahli serta pinjaman.'),
-  'how.3h': ('Training', 'Latihan'),
-  'how.3p': ('Hands-on sessions for office staff and the board, plus simple guides for members.',
-             'Sesi praktikal untuk kakitangan pejabat dan lembaga, serta panduan mudah untuk ahli.'),
-  'how.4h': ('Go live with support', 'Mula guna dengan sokongan'),
-  'how.4p': ('We launch alongside your paper process and stay with you with local support.',
-             'Kami melancarkan sistem seiring dengan proses kertas anda dan terus memberi sokongan tempatan.'),
 
-  'who.h': ('Made for everyone in the koperasi', 'Dibina untuk semua dalam koperasi'),
-  'who.board.h': ('The board', 'Lembaga'),
-  'who.board.p': ('Live figures on members, loans and dividends for faster, better-informed decisions.',
-                  'Angka terkini tentang ahli, pinjaman dan dividen untuk keputusan yang lebih pantas dan tepat.'),
-  'who.staff.h': ('Office staff', 'Kakitangan pejabat'),
-  'who.staff.p': ('Less re-typing and chasing: one place for applications, approvals and member questions.',
-                  'Kurang menaip semula dan mengejar dokumen: satu tempat untuk permohonan, kelulusan dan pertanyaan ahli.'),
-  'who.member.h': ('Members', 'Ahli'),
-  'who.member.p': ('Their membership, loans and koperasi news on their own phone, in their own language.',
-                   'Keahlian, pinjaman dan berita koperasi di telefon sendiri, dalam bahasa sendiri.'),
-
-  'case.h': ('Koperasi Guru-Guru Sekolah India Perak Berhad', 'Koperasi Guru-Guru Sekolah India Perak Berhad'),
-  'case.p': ('A cooperative of more than 1,200 Tamil school teachers moved its membership, loans and member requests online, while the office keeps accepting paper forms.',
-             'Sebuah koperasi dengan lebih 1,200 guru sekolah Tamil memindahkan keahlian, pinjaman dan permintaan ahli ke dalam talian, sementara pejabat masih menerima borang kertas.'),
-  'case.label': ('Koperasi we serve', 'Koperasi yang kami bantu'),
-  'case.1': ('Member portal, staff portal and public website', 'Portal ahli, portal kakitangan dan laman web awam'),
-  'case.2': ('Bahasa Melayu, English and Tamil', 'Bahasa Melayu, Inggeris dan Tamil'),
-  'case.3': ('Installable mobile app for members', 'Aplikasi mudah alih untuk ahli'),
-
-  'contact.h': ('Let\'s digitalise your koperasi', 'Mari digitalkan koperasi anda'),
-  'contact.p': ('Tell us about your koperasi and we will arrange a free demo at your office or online.',
-                'Ceritakan tentang koperasi anda dan kami akan mengatur demo percuma di pejabat anda atau dalam talian.'),
-  'c.email': ('Email', 'E-mel'), 'c.phone': ('Phone and WhatsApp', 'Telefon dan WhatsApp'), 'c.office': ('Office', 'Pejabat'),
-  'form.name': ('Your name', 'Nama anda'), 'form.koperasi': ('Koperasi name', 'Nama koperasi'),
-  'form.members': ('Number of members', 'Bilangan ahli'), 'form.email': ('Email', 'E-mel'),
-  'form.msg': ('What would you like to improve?', 'Apa yang ingin anda perbaiki?'),
-  'form.ph': ('For example: loan applications still on paper, dividend calculations in Excel', 'Contoh: permohonan pinjaman masih di atas kertas, pengiraan dividen dalam Excel'),
-  'form.send': ('Email our team', 'E-mel pasukan kami'),
+  'contact.h': ('Let\'s talk about your operations', 'Mari berbincang tentang operasi anda'),
+  'contact.p': ('A 30-minute conversation is usually enough to scope where automation pays off first.', 'Perbualan selama 30 minit biasanya mencukupi untuk mengenal pasti di mana automasi memberi pulangan terlebih dahulu.'),
+  'c.email': ('Email', 'E-mel'), 'c.phone': ('Phone', 'Telefon'), 'c.office': ('Office', 'Pejabat'),
+  'form.name': ('Your name', 'Nama anda'), 'form.org': ('Organisation', 'Organisasi'),
+  'form.email': ('Email', 'E-mel'), 'form.phone': ('Phone (optional)', 'Telefon (pilihan)'),
+  'form.msg': ('Which process would you like to automate?', 'Proses mana yang ingin anda automasikan?'),
+  'form.ph': ('For example: loan approvals on paper, claims tracked in Excel, member records in files', 'Contoh: kelulusan pinjaman di atas kertas, tuntutan dijejak dalam Excel, rekod ahli dalam fail'),
+  'form.send': ('Email us', 'E-mel kami'),
   'form.note': ('This opens your email app with the details filled in. Nothing is stored on this website.',
                 'Ini membuka aplikasi e-mel anda dengan butiran telah diisi. Tiada maklumat disimpan di laman web ini.'),
   'form.err': ('Please add your name, a valid email and your message.', 'Sila isi nama, e-mel yang sah dan mesej anda.'),
-  'foot.tag': ('Digitalising koperasi across Malaysia', 'Mendigitalkan koperasi di seluruh Malaysia'),
+  'foot.tag': ('Digital platforms and business process automation for SMEs and financial services', 'Platform digital dan automasi proses perniagaan untuk PKS dan perkhidmatan kewangan'),
 }
 
 def tx(key, tag='span', attrs=''):
     return f'<{tag} data-i18n="{key}"{(" " + attrs) if attrs else ""}>{T[key][0]}</{tag}>'
 
-LOGO_MARK = ('<svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#0c4a45"/>'
-             '<path d="M9 25 Q20 9 31 13" fill="none" stroke="#f4b63f" stroke-width="3.6" stroke-linecap="round"/><path d="M27 10.5 l5 2.5 l-3.5 4" fill="none" stroke="#f4b63f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
-             '<circle cx="12" cy="31" r="3.2" fill="#2fb36b"/><circle cx="20" cy="29" r="3.2" fill="#ffffff"/><circle cx="28" cy="31" r="3.2" fill="#2fb36b"/></svg>')
+NAVY, BRONZE = '#16213e', '#a8762c'
+LOGO_MARK = (f'<svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="{NAVY}"/>'
+             f'<path d="M9 26 Q20 10 31 14" fill="none" stroke="#c99a4b" stroke-width="3.4" stroke-linecap="round"/><path d="M27 11.5 l5 2.5 l-3.5 4" fill="none" stroke="#c99a4b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>'
+             '<circle cx="12" cy="31" r="3" fill="#c99a4b"/><circle cx="20" cy="29.5" r="3" fill="#ffffff"/><circle cx="28" cy="31" r="3" fill="#c99a4b"/></svg>')
 
 def logo(cls='brand'):
     return (f'<a class="{cls}" href="/" aria-label="DDP Management home">{LOGO_MARK}'
-            f'<span class="word"><b>DDPM</b><small>DDP Management</small></span></a>')
+            f'<span class="word"><b>DDP Management</b><small data-i18n="brand.tag">{T["brand.tag"][0]}</small></span></a>')
 
 ICONS = {
-  'f1': '<path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 19a5 5 0 0 1 10 0M11 19a5 5 0 0 1 10 0"/>',
-  'f2': '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/><path d="M14 17l2 2 3-4"/>',
-  'f3': '<path d="M4 19V9M10 19V5M16 19v-7M3 21h18"/><path d="M14 7l3-3 3 3"/>',
-  'f4': '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/><circle cx="4" cy="8" r="1.5"/><circle cx="20" cy="8" r="1.5"/><circle cx="4" cy="15" r="1.5"/><circle cx="20" cy="15" r="1.5"/>',
-  'f5': '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/><path d="M8 16h3"/><path d="M14 15.5l1.5 1.5 3-3.5"/>',
-  'f6': '<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h3"/><circle cx="17" cy="15" r="1.2"/>',
+  'v1': '<circle cx="8" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19a5 5 0 0 1 10 0M13 19a4 4 0 0 1 8 0"/>',
+  'v2': '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 6H12a3 3 0 0 1 3 3v.5M8.5 18H12a3 3 0 0 0 3-3v-.5"/>',
+  'v3': '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9l2 2 4-4"/>',
+  'v4': '<path d="M4 12a8 8 0 0 1 16 0v4a2 2 0 0 1-2 2h-1v-6h3M4 12v4a2 2 0 0 0 2 2h1v-6H4"/>',
+  'v5': '<path d="M4 4h7v7H4zM13 13h7v7h-7z"/><path d="M15 4h5v5M9 20H4v-5M20 4l-6 6M4 20l6-6"/>',
+  'w1': '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/>',
+  'w2': '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  'w3': '<circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/>',
+  'w4': '<path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>',
 }
-def icon(k):
-    return f'<svg viewBox="0 0 24 24" class="ico" aria-hidden="true">{ICONS[k]}</svg>'
+def icon(k, cls='ico'):
+    return f'<svg viewBox="0 0 24 24" class="{cls}" aria-hidden="true">{ICONS[k]}</svg>'
 
-slides = [('s1', scene_members()), ('s4', scene_payments()), ('s2', scene_dividend()), ('s3', scene_loan())]
-slides_html = ''.join(f'''
+slides = [('s1', scene_loan()), ('s2', scene_members()), ('s3', scene_payments()), ('s4', scene_dividend())]
+slides_html = ''.join(f"""
       <div class="slide{' active' if i == 0 else ''}" data-slide="{i}" aria-roledescription="slide" aria-label="{i+1} / {len(slides)}"{'' if i == 0 else ' aria-hidden="true"'}>
         <div class="wrap slide-grid">
           <div class="slide-text">
             {tx(k + '.h', 'h1' if i == 0 else 'h2', 'class="slide-h"')}
             {tx(k + '.p', 'p', 'class="slide-p"')}
-            <div class="cta"><a class="btn big gold" href="#contact" data-i18n="cta.demo">{T['cta.demo'][0]}</a><a class="btn big ghost" href="#how" data-i18n="cta.how">{T['cta.how'][0]}</a></div>
+            <div class="cta"><a class="btn big gold" href="#contact" data-i18n="cta.talk">{T['cta.talk'][0]}</a><a class="btn big ghost" href="#services" data-i18n="cta.services">{T['cta.services'][0]}</a></div>
           </div>
-          <div class="slide-art">{art}</div>
+          <div class="slide-art">{brand(art)}</div>
         </div>
-      </div>''' for i, (k, art) in enumerate(slides))
+      </div>""" for i, (k, art) in enumerate(slides))
 
-html = f'''<!doctype html>
+html = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -171,9 +163,9 @@ html = f'''<!doctype html>
   <link rel="canonical" href="https://ddpm.com.my/">
   <meta property="og:type" content="website"><meta property="og:url" content="https://ddpm.com.my/">
   <meta property="og:title" content="{T['title'][0]}"><meta property="og:description" content="{T['desc'][0]}">
-  <meta name="theme-color" content="#0c4a45">
+  <meta name="theme-color" content="#16213e">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -184,18 +176,18 @@ html = f'''<!doctype html>
       {logo()}
       <button class="menu" type="button" aria-expanded="false" aria-controls="nav" data-i18n="menu">Menu</button>
       <nav id="nav" aria-label="Main">
-        <a href="#solutions" data-i18n="nav.solutions">{T['nav.solutions'][0]}</a>
-        <a href="#dividend" data-i18n="nav.dividend">{T['nav.dividend'][0]}</a>
+        <a href="#services" data-i18n="nav.services">{T['nav.services'][0]}</a>
+        <a href="#koperasi" data-i18n="nav.koperasi">{T['nav.koperasi'][0]}</a>
         <a href="#how" data-i18n="nav.how">{T['nav.how'][0]}</a>
         <a href="#contact" data-i18n="nav.contact">{T['nav.contact'][0]}</a>
         <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="ms" lang="ms">BM</button><button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button></div>
-        <a class="btn" href="#contact" data-i18n="cta.demo">{T['cta.demo'][0]}</a>
+        <a class="btn" href="#contact" data-i18n="cta.talk">{T['cta.talk'][0]}</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-roledescription="carousel" aria-label="DDPM">
+    <section class="hero" aria-roledescription="carousel" aria-label="DDP Management">
       <div class="slides" id="slides">{slides_html}
       </div>
       <div class="wrap controls">
@@ -206,15 +198,42 @@ html = f'''<!doctype html>
       </div>
     </section>
 
-    <section class="mission"><div class="wrap">{tx('mission', 'p')}</div></section>
+    <section class="results" aria-label="Results">
+      <div class="wrap results-grid">
+        <div class="stat"><b>100+</b>{tx('stat1', 'span')}</div>
+        <div class="stat"><b>RM1M+</b>{tx('stat2', 'span')}</div>
+        {tx('stat3', 'p', 'class="stat-note"')}
+      </div>
+    </section>
 
-    <section id="solutions" class="band">
+    <section id="services" class="band">
       <div class="wrap">
-        <div class="head">{tx('sol.h', 'h2')}{tx('sol.p', 'p')}</div>
-        <div class="features">
-          {''.join(f'<article class="feature" data-f="{k}"><div class="badge">{icon(k)}</div>{tx(k + ".h", "h3")}{tx(k + ".p", "p")}</article>' for k in ['f1', 'f2', 'f5', 'f6', 'f3', 'f4'])}
-        </div>
-        <div class="also">{tx('also.h', 'h3')}<ul>{''.join(f'<li>{tx(f"also.{i}")}</li>' for i in range(1, 7))}</ul></div>
+        <div class="head">{tx('svc.h', 'h2')}{tx('svc.p', 'p')}</div>
+        <ul class="services">
+          {''.join(f'<li>{icon(k, "sico")}<h3 data-i18n="{k}.h">{T[k + ".h"][0]}</h3>{tx(k + ".p", "p")}</li>' for k in ['v1', 'v2', 'v3', 'v4', 'v5'])}
+        </ul>
+      </div>
+    </section>
+
+    <section class="band soft">
+      <div class="wrap">
+        <div class="head">{tx('who.h', 'h2')}</div>
+        <div class="who">{''.join(f'<div class="who-card">{icon("w" + str(i), "wico")}{tx(f"who.{i}h", "h3")}{tx(f"who.{i}p", "p")}</div>' for i in range(1, 5))}</div>
+      </div>
+    </section>
+
+    <section id="how" class="band">
+      <div class="wrap">
+        <aside class="why">{tx('why.h', 'h2')}{tx('why.p', 'p')}</aside>
+        <div class="head" style="margin-top:3.5rem">{tx('how.h', 'h2')}</div>
+        <ol class="steps">{''.join(f'<li>{tx(f"how.{i}h", "h3")}{tx(f"how.{i}p", "p")}</li>' for i in range(1, 5))}</ol>
+      </div>
+    </section>
+
+    <section id="koperasi" class="band soft">
+      <div class="wrap">
+        <div class="head">{tx('kp.h', 'h2')}{tx('kp.p', 'p')}</div>
+        <ul class="modules">{''.join(f'<li>{tx(f"k{i}")}</li>' for i in range(1, 10))}</ul>
       </div>
     </section>
 
@@ -237,41 +256,20 @@ html = f'''<!doctype html>
       </div>
     </section>
 
-    <section id="how" class="band">
-      <div class="wrap">
-        <div class="head">{tx('how.h', 'h2')}</div>
-        <ol class="steps">{''.join(f'<li>{tx(f"how.{i}h", "h3")}{tx(f"how.{i}p", "p")}</li>' for i in range(1, 5))}</ol>
-      </div>
-    </section>
-
-    <section class="band soft">
-      <div class="wrap">
-        <div class="head">{tx('who.h', 'h2')}</div>
-        <div class="who">{''.join(f'<div class="person-card">{avatar(k)}<div>{tx(f"who.{k}.h", "h3")}{tx(f"who.{k}.p", "p")}</div></div>' for k in ['board', 'staff', 'member'])}</div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="wrap case">
-        <div>{tx('case.label', 'p', 'class="case-label"')}{tx('case.h', 'h2')}{tx('case.p', 'p')}</div>
-        <ul class="ticks">{''.join(f'<li>{tx(f"case.{i}")}</li>' for i in range(1, 4))}</ul>
-      </div>
-    </section>
-
     <section id="contact" class="band contact">
       <div class="wrap contact-grid">
         <div>{tx('contact.h', 'h2')}{tx('contact.p', 'p')}
           <dl class="reach">
-            <dt data-i18n="c.email">Email</dt><dd><a href="mailto:info@ddpm.com.my">info@ddpm.com.my</a></dd>
-            <dt data-i18n="c.phone">Phone and WhatsApp</dt><dd><a href="tel:+60126915794">+60 12-691 5794</a></dd>
+            <dt data-i18n="c.email">Email</dt><dd><a href="mailto:Kumaravel@ddpm.com.my">Kumaravel@ddpm.com.my</a></dd>
+            <dt data-i18n="c.phone">Phone</dt><dd><a href="tel:+60126915794">+60 12-691 5794</a></dd>
             <dt data-i18n="c.office">Office</dt><dd>No 14, Jalan Berlian 14,<br>Taman Berlian SG, Jelok,<br>43000 Kajang, Selangor, Malaysia</dd>
           </dl>
         </div>
         <form class="enquiry" id="enquiry" novalidate>
           <div class="field"><label for="q-name" data-i18n="form.name">{T['form.name'][0]}</label><input id="q-name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="q-kop" data-i18n="form.koperasi">{T['form.koperasi'][0]}</label><input id="q-kop" name="koperasi" autocomplete="organization"></div>
+          <div class="field"><label for="q-org" data-i18n="form.org">{T['form.org'][0]}</label><input id="q-org" name="org" autocomplete="organization"></div>
           <div class="field"><label for="q-email" data-i18n="form.email">{T['form.email'][0]}</label><input id="q-email" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="q-mem" data-i18n="form.members">{T['form.members'][0]}</label><input id="q-mem" name="members" inputmode="numeric"></div>
+          <div class="field"><label for="q-phone" data-i18n="form.phone">{T['form.phone'][0]}</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
           <div class="field wide"><label for="q-msg" data-i18n="form.msg">{T['form.msg'][0]}</label><textarea id="q-msg" name="message" rows="4" required data-i18n-ph="form.ph" placeholder="{T['form.ph'][0]}"></textarea></div>
           <p class="err" id="q-err" role="alert" hidden data-i18n="form.err">{T['form.err'][0]}</p>
           <div class="wide"><button class="btn big gold" type="submit" data-i18n="form.send">{T['form.send'][0]}</button>{tx('form.note', 'p', 'class="small"')}</div>
@@ -283,7 +281,7 @@ html = f'''<!doctype html>
   <footer class="foot">
     <div class="wrap foot-grid">
       <div>{logo('brand light')}{tx('foot.tag', 'p')}</div>
-      <nav aria-label="Footer"><a href="#solutions" data-i18n="nav.solutions">{T['nav.solutions'][0]}</a><a href="#dividend" data-i18n="nav.dividend">{T['nav.dividend'][0]}</a><a href="#how" data-i18n="nav.how">{T['nav.how'][0]}</a><a href="#contact" data-i18n="nav.contact">{T['nav.contact'][0]}</a></nav>
+      <nav aria-label="Footer"><a href="#services" data-i18n="nav.services">{T['nav.services'][0]}</a><a href="#koperasi" data-i18n="nav.koperasi">{T['nav.koperasi'][0]}</a><a href="#how" data-i18n="nav.how">{T['nav.how'][0]}</a><a href="#contact" data-i18n="nav.contact">{T['nav.contact'][0]}</a></nav>
       <p class="copy">© <span id="year">2026</span> DDP Management</p>
     </div>
   </footer>
@@ -291,7 +289,7 @@ html = f'''<!doctype html>
   <script src="/assets/site.js" defer></script>
 </body>
 </html>
-'''
+"""
 open(os.path.join(ROOT, 'site/index.html'), 'w', encoding='utf-8').write(html)
 js = 'window.DDPM_TEXT = ' + json.dumps({k: {'en': v[0], 'ms': v[1]} for k, v in T.items()}, ensure_ascii=False, indent=0) + ';\n'
 open(os.path.join(ROOT, 'site/assets/i18n.js'), 'w', encoding='utf-8').write(js)

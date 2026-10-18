@@ -2,7 +2,7 @@
 Animation is done in CSS (see site.css): it plays when a slide becomes active and
 is switched off for visitors who prefer reduced motion."""
 
-INK = '#13302c'
+INK = '#16213e'
 SKIN = {'light': '#f6d2b0', 'tan': '#e2ad7f', 'brown': '#c58658', 'deep': '#8d5634'}
 
 
@@ -68,7 +68,7 @@ def coin(x, y, r=22, cls='', style=''):
 def big_coin(x, y, cls='', style=''):
     return (f'<g transform="translate({x} {y})"><g class="{cls}" style="{style}"><circle r="24" fill="#c98a12"/><circle r="21" fill="#f4b63f"/>'
             f'<circle r="16" fill="none" stroke="#fbd77f" stroke-width="2"/>'
-            f'<text x="0" y="6" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="15" fill="#7a4f05">RM</text></g></g>')
+            f'<text x="0" y="6" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="15" fill="#7a4f05">RM</text></g></g>')
 
 
 def scene_members():
@@ -100,13 +100,13 @@ def scene_members():
     bubbles = ('<g class="pop" style="--d:1.8s"><rect x="100" y="230" width="44" height="30" rx="10" fill="#ffffff" stroke="#cfe6dc"/>'
                '<path d="M112 244 l6 6 l12 -12" fill="none" stroke="#2fb36b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>'
                '<g class="pop" style="--d:2s"><rect x="508" y="240" width="48" height="30" rx="10" fill="#ffffff" stroke="#cfe6dc"/>'
-               '<text x="532" y="261" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="15" fill="#c98a12">RM</text></g>')
+               '<text x="532" y="261" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="15" fill="#c98a12">RM</text></g>')
     return (f'<svg viewBox="0 0 640 450" class="scene" aria-hidden="true">'
             f'<circle cx="320" cy="240" r="200" fill="#dff3ea"/><ellipse cx="320" cy="425" rx="290" ry="18" fill="#cfe9de"/>'
             f'{links}{phone}{bell}{"".join(people)}{bubbles}</svg>')
 
 
-def scene_dividend():
+def scene_dividend(tag='RM1M+'):
     """Slide 2: bars rise, the growth line draws, coins stack up, the committee looks on."""
     bars, heights = [], [60, 92, 118, 150, 196]
     for i, h in enumerate(heights):
@@ -119,8 +119,8 @@ def scene_dividend():
              '<path d="M226 330 H488" stroke="#d2e8df" stroke-width="2"/>')
     stack = ''.join(coin(570, 330 - i * 13, 26, 'drop', f'--d:{.6+i*.22:.2f}s') for i in range(7))
     floaters = big_coin(150, 140, 'float', '--d:2.2s') + big_coin(540, 120, 'float', '--d:2.5s')
-    tag = ('<g class="pop" style="--d:2.1s"><rect x="420" y="70" width="96" height="40" rx="12" fill="#0c4a45"/>'
-           '<text x="468" y="97" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="20" fill="#f4b63f">5.5%</text></g>')
+    tag = ('<g class="pop" style="--d:2.1s"><rect x="404" y="66" width="124" height="44" rx="12" fill="#0c4a45"/>'
+           f'<text x="466" y="95" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="21" fill="#f4b63f">{tag}</text></g>')
     people = [
         person(100, 425, 1.05, 'brown', '#0c4a45', '#24324a', 'songkok', '#111', point=True, from_x=-260, delay=.2),
         person(160, 432, 1.0, 'tan', '#f4b63f', '#20403b', 'tudung', '#2fb36b', extra='dress', from_x=-260, delay=.35),
@@ -182,19 +182,19 @@ def scene_payments():
                 + ''.join(f'<rect x="{bx-74+i*40}" y="{by-108}" width="16" height="96" rx="4" fill="#dff3ea"/>' for i in range(4))
                 + f'<rect x="{bx-20}" y="{by-56}" width="40" height="56" rx="6" fill="#0c4a45"/>'
                 f'<rect x="{bx-52}" y="{by-152}" width="104" height="20" rx="6" fill="#f4b63f"/>'
-                f'<text x="{bx}" y="{by-137}" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="13" fill="#13302c">KOPERASI</text>'
+                f'<text x="{bx}" y="{by-137}" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="13" fill="#13302c">KOPERASI</text>'
                 f'<rect x="{bx-110}" y="{by}" width="220" height="10" rx="4" fill="#0c4a45"/></g>')
     # Angkasa payslip (left)
     slip = ('<g class="pop" style="--d:.3s"><rect x="36" y="120" width="132" height="168" rx="14" fill="#ffffff" stroke="#d2e8df" stroke-width="2"/>'
             '<rect x="52" y="138" width="60" height="9" rx="4.5" fill="#0c4a45"/>'
             + ''.join(f'<rect x="52" y="{164+i*22}" width="{w}" height="7" rx="3.5" fill="#dbe8e3"/><rect x="{132}" y="{164+i*22}" width="20" height="7" rx="3.5" fill="#dbe8e3"/>' for i, w in enumerate([56, 44, 62]))
             + '<rect x="46" y="226" width="112" height="26" rx="8" fill="#fff1d1"/>'
-            '<text x="56" y="244" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="12" fill="#a06b06">ANGKASA</text>'
+            '<text x="56" y="244" font-family="Figtree, sans-serif" font-weight="800" font-size="12" fill="#a06b06">ANGKASA</text>'
             '<rect x="124" y="235" width="26" height="8" rx="4" fill="#f4b63f"/></g>')
     # phone paying online (right)
     phone = ('<g class="pop" style="--d:.45s"><rect x="486" y="96" width="112" height="206" rx="20" fill="#0c4a45"/><rect x="494" y="109" width="96" height="180" rx="11" fill="#ffffff"/>'
              '<rect x="504" y="122" width="44" height="8" rx="4" fill="#0c4a45"/>'
-             '<text x="542" y="172" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="20" fill="#0c4a45">RM 250</text>'
+             '<text x="542" y="172" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="20" fill="#0c4a45">RM 250</text>'
              '<rect x="506" y="186" width="72" height="22" rx="7" fill="#eef6f2"/><circle cx="518" cy="197" r="6" fill="#5aa9e6"/><rect x="530" y="193" width="38" height="7" rx="3.5" fill="#cfe2da"/>'
              '<rect x="506" y="216" width="72" height="22" rx="7" fill="#eef6f2"/><circle cx="518" cy="227" r="6" fill="#e7578a"/><rect x="530" y="223" width="32" height="7" rx="3.5" fill="#cfe2da"/>'
              '<rect class="press" style="--d:1.1s" x="506" y="250" width="72" height="26" rx="13" fill="#2fb36b"/>'
@@ -203,7 +203,7 @@ def scene_payments():
     def flyer(x, y, tx, ty, d):
         return (f'<g transform="translate({x} {y})"><g class="fly" style="--d:{d:.2f}s;--tx:{tx}px;--ty:{ty}px">'
                 f'<circle r="15" fill="#c98a12"/><circle r="12.5" fill="#f4b63f"/>'
-                f'<text y="4.5" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="10" fill="#7a4f05">RM</text></g></g>')
+                f'<text y="4.5" text-anchor="middle" font-family="Figtree, sans-serif" font-weight="800" font-size="10" fill="#7a4f05">RM</text></g></g>')
     coins = ''.join(flyer(150, 238, bx - 40 - 150, by - 90 - 238, 1.0 + i * .28) for i in range(3)) + \
             ''.join(flyer(540, 262, bx + 40 - 540, by - 90 - 262, 1.35 + i * .28) for i in range(3))
     trails = ('<path class="flow" style="--d:.9s" d="M168 236 Q230 170 282 196"/>'
@@ -220,3 +220,11 @@ def scene_payments():
     return (f'<svg viewBox="0 0 640 450" class="scene" aria-hidden="true">'
             f'<circle cx="320" cy="220" r="205" fill="#eaf6ef"/><ellipse cx="320" cy="430" rx="300" ry="18" fill="#d3eadf"/>'
             f'{trails}{building}{slip}{phone}{coins}{ledger}{"".join(people)}</svg>')
+
+
+PAL = {'#0c4a45': '#16213e', '#dff3ea': '#efe9dd', '#cfe9de': '#e3dccd', '#eaf6ef': '#efe9dd', '#d3eadf': '#e3dccd', '#fff4dc': '#f6eedd', '#f6e5bb': '#eadcbc', '#e6f1fb': '#e8ecf4', '#d3e5f3': '#d9dfeb', '#7fd0a8': '#c8b48e', '#cfe6dc': '#e3dccd'}
+
+def brand(svg):
+    for a, b in PAL.items():
+        svg = svg.replace(a, b)
+    return svg

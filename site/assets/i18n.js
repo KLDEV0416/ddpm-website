@@ -1,71 +1,75 @@
 window.DDPM_TEXT = {
 "title": {
-"en": "DDP Management: koperasi systems for Malaysia",
-"ms": "DDP Management: sistem koperasi untuk Malaysia"
+"en": "DDP Management: IT delivery and business automation for SMEs and financial services",
+"ms": "DDP Management: penyampaian IT dan automasi perniagaan untuk PKS dan perkhidmatan kewangan"
 },
 "desc": {
-"en": "DDP Management helps Malaysian koperasi go digital: member management, online loan applications, Angkasa deduction integration, online payments, live dividend estimates and one app for every member.",
-"ms": "DDP Management membantu koperasi di Malaysia beralih ke digital: pengurusan ahli, permohonan pinjaman dalam talian, integrasi potongan Angkasa, bayaran dalam talian, anggaran dividen secara langsung dan satu aplikasi untuk semua ahli."
+"en": "DDP Management replaces paper-based, manual operations with automated digital platforms for SMEs and financial services companies in Malaysia, including a complete koperasi digital operations platform.",
+"ms": "DDP Management menggantikan operasi manual berasaskan kertas dengan platform digital automatik untuk PKS dan syarikat perkhidmatan kewangan di Malaysia, termasuk platform operasi digital koperasi yang lengkap."
 },
-"nav.solutions": {
-"en": "Solutions",
-"ms": "Penyelesaian"
+"brand.tag": {
+"en": "IT Delivery & Business Automation",
+"ms": "Penyampaian IT & Automasi Perniagaan"
 },
-"nav.dividend": {
-"en": "Dividend estimator",
-"ms": "Anggaran dividen"
+"nav.services": {
+"en": "Services",
+"ms": "Perkhidmatan"
+},
+"nav.koperasi": {
+"en": "Koperasi platform",
+"ms": "Platform koperasi"
 },
 "nav.how": {
-"en": "How it works",
-"ms": "Cara ia berfungsi"
+"en": "How we work",
+"ms": "Cara kami bekerja"
 },
 "nav.contact": {
 "en": "Contact",
 "ms": "Hubungi"
 },
-"cta.demo": {
-"en": "Book a free demo",
-"ms": "Tempah demo percuma"
+"cta.talk": {
+"en": "Talk to us",
+"ms": "Hubungi kami"
 },
-"cta.how": {
-"en": "See how it works",
-"ms": "Lihat cara ia berfungsi"
+"cta.services": {
+"en": "See what we do",
+"ms": "Lihat perkhidmatan kami"
 },
 "menu": {
 "en": "Menu",
 "ms": "Menu"
 },
 "s1.h": {
-"en": "Every member, one koperasi app",
-"ms": "Semua ahli, satu aplikasi koperasi"
+"en": "Replace manual operations with automated digital platforms",
+"ms": "Gantikan operasi manual dengan platform digital automatik"
 },
 "s1.p": {
-"en": "Members check their membership, apply for loans and read announcements on their phone. Your office sees everything in one place.",
-"ms": "Ahli menyemak keahlian, memohon pinjaman dan membaca pengumuman di telefon. Pejabat anda melihat semuanya di satu tempat."
+"en": "Purpose-built for SMEs and financial services companies in Malaysia. We design, build and support systems that cut cost, reduce error and free your people to focus on customers instead of paperwork.",
+"ms": "Dibina khusus untuk PKS dan syarikat perkhidmatan kewangan di Malaysia. Kami mereka bentuk, membina dan menyokong sistem yang mengurangkan kos, mengurangkan kesilapan dan membebaskan kakitangan anda untuk memberi tumpuan kepada pelanggan, bukan kertas kerja."
 },
 "s2.h": {
-"en": "See the dividend before the meeting",
-"ms": "Lihat dividen sebelum mesyuarat"
+"en": "A complete digital platform for koperasi",
+"ms": "Platform digital lengkap untuk koperasi"
 },
 "s2.p": {
-"en": "Live dividend estimates let the board compare rates in minutes and decide with confidence.",
-"ms": "Anggaran dividen secara langsung membolehkan lembaga membandingkan kadar dalam beberapa minit dan membuat keputusan dengan yakin."
+"en": "Member management, share capital and subscriptions, nominee records, PDPA consent, loans, dividends and Angkasa deductions, in one system members can use from their phone.",
+"ms": "Pengurusan ahli, modal syer dan yuran, rekod penama, persetujuan PDPA, pinjaman, dividen dan potongan Angkasa, dalam satu sistem yang boleh digunakan ahli melalui telefon."
 },
 "s3.h": {
-"en": "Loan applications without the paperwork",
-"ms": "Permohonan pinjaman tanpa kertas"
+"en": "Every payment matched automatically",
+"ms": "Setiap bayaran dipadankan secara automatik"
 },
 "s3.p": {
-"en": "Members apply online, staff review and approve, and everyone can follow the status as it moves.",
-"ms": "Ahli memohon dalam talian, kakitangan menyemak dan meluluskan, dan semua orang boleh mengikuti status permohonan."
+"en": "Salary deductions, online payments and receipts reconciled without manual matching, with a full record of every transaction.",
+"ms": "Potongan gaji, bayaran dalam talian dan resit dipadankan tanpa kerja manual, dengan rekod lengkap setiap transaksi."
 },
 "s4.h": {
-"en": "Every ringgit, matched automatically",
-"ms": "Setiap ringgit, dipadankan secara automatik"
+"en": "Results your committee can see",
+"ms": "Hasil yang dapat dilihat oleh jawatankuasa anda"
 },
 "s4.p": {
-"en": "Angkasa salary deductions and members' online payments go straight to the right account, with receipts and no manual matching.",
-"ms": "Potongan gaji Angkasa dan bayaran dalam talian oleh ahli terus masuk ke akaun yang betul, dengan resit dan tanpa padanan manual."
+"en": "More than 100 business processes automated and over RM1 million in manpower cost savings delivered through automation.",
+"ms": "Lebih 100 proses perniagaan diautomasikan dan lebih RM1 juta penjimatan kos tenaga kerja melalui automasi."
 },
 "slide.prev": {
 "en": "Previous slide",
@@ -87,101 +91,197 @@ window.DDPM_TEXT = {
 "en": "Show slide",
 "ms": "Tunjuk slaid"
 },
-"mission": {
-"en": "Our goal is simple: every koperasi in Malaysia, digital, so members are served faster and boards decide with real numbers.",
-"ms": "Matlamat kami mudah: setiap koperasi di Malaysia menjadi digital, supaya ahli dilayan lebih pantas dan lembaga membuat keputusan berdasarkan angka sebenar."
+"stat1": {
+"en": "Business processes automated across financial services engagements",
+"ms": "Proses perniagaan diautomasikan dalam projek perkhidmatan kewangan"
 },
-"sol.h": {
-"en": "Everything your koperasi runs on, in one system",
-"ms": "Semua keperluan koperasi anda, dalam satu sistem"
+"stat2": {
+"en": "Manpower cost savings delivered through automation",
+"ms": "Penjimatan kos tenaga kerja melalui automasi"
 },
-"sol.p": {
-"en": "Built for how Malaysian koperasi really work, including the paper forms that still come into the office.",
-"ms": "Dibina mengikut cara koperasi di Malaysia bekerja, termasuk borang kertas yang masih diterima di pejabat."
+"stat3": {
+"en": "Every platform is built around the governance, data-protection and reporting standards Malaysia's financial-services regulators expect, so compliance is designed in, not retrofitted.",
+"ms": "Setiap platform dibina berdasarkan piawaian tadbir urus, perlindungan data dan pelaporan yang diharapkan oleh pengawal selia perkhidmatan kewangan Malaysia, jadi pematuhan direka sejak awal, bukan ditambah kemudian."
 },
-"f1.h": {
-"en": "Easy member management",
-"ms": "Pengurusan ahli mudah"
+"svc.h": {
+"en": "What we do",
+"ms": "Apa yang kami lakukan"
 },
-"f1.p": {
-"en": "Register members online or from paper forms. Keep IC, employer, bank details, nominees and status in one record, and find anyone in seconds.",
-"ms": "Daftar ahli dalam talian atau daripada borang kertas. Simpan IC, majikan, maklumat bank, penama dan status dalam satu rekod, dan cari sesiapa sahaja dalam beberapa saat."
+"svc.p": {
+"en": "From member management to claims-adjacent workflows, we take operations from paper to dependable digital platforms.",
+"ms": "Daripada pengurusan ahli hingga aliran kerja berkaitan tuntutan, kami membawa operasi daripada kertas kepada platform digital yang boleh dipercayai."
 },
-"f2.h": {
-"en": "Easy loan applications",
-"ms": "Permohonan pinjaman mudah"
+"v1.h": {
+"en": "Koperasi Digital Operations Platform",
+"ms": "Platform Operasi Digital Koperasi"
 },
-"f2.p": {
-"en": "Members apply from their phone; staff key in paper forms. Every application moves through review and approval with a clear record of who decided and why.",
-"ms": "Ahli memohon melalui telefon; kakitangan memasukkan borang kertas. Setiap permohonan melalui semakan dan kelulusan dengan rekod jelas siapa yang membuat keputusan dan sebabnya."
+"v1.p": {
+"en": "A dedicated platform covering member management, share capital and subscriptions, statutory nominee records and PDPA consent, replacing manual, paper-based koperasi administration.",
+"ms": "Platform khusus merangkumi pengurusan ahli, modal syer dan yuran, rekod penama berkanun dan persetujuan PDPA, menggantikan pentadbiran koperasi manual berasaskan kertas."
 },
-"f3.h": {
-"en": "Live dividend estimation",
-"ms": "Anggaran dividen secara langsung"
+"v2.h": {
+"en": "Business Process Automation",
+"ms": "Automasi Proses Perniagaan"
 },
-"f3.p": {
-"en": "Try different dividend rates on your real share balances and see the total payout and each member's dividend instantly. The board decides faster, with confidence.",
-"ms": "Cuba kadar dividen berbeza pada baki syer sebenar dan lihat jumlah bayaran serta dividen setiap ahli serta-merta. Lembaga membuat keputusan lebih pantas dan yakin."
+"v2.p": {
+"en": "End-to-end automation of high-volume, manual workflows across insurance and koperasi operations, cutting turnaround time and reducing dependence on manual headcount.",
+"ms": "Automasi menyeluruh aliran kerja manual bervolum tinggi dalam operasi insurans dan koperasi, memendekkan masa pemprosesan dan mengurangkan kebergantungan kepada tenaga kerja manual."
 },
-"f4.h": {
-"en": "One app for every member",
-"ms": "Satu aplikasi untuk semua ahli"
+"v3.h": {
+"en": "Digital System Implementation",
+"ms": "Pelaksanaan Sistem Digital"
 },
-"f4.p": {
-"en": "Web and mobile app in Bahasa Melayu, English and Tamil. Announcements reach every member, and help requests reach the right person in the office.",
-"ms": "Aplikasi web dan mudah alih dalam Bahasa Melayu, Inggeris dan Tamil. Pengumuman sampai kepada setiap ahli, dan permintaan bantuan sampai kepada orang yang betul di pejabat."
+"v3.p": {
+"en": "Full-cycle implementation of digital systems, from requirements through go-live, sized to fit real operational capacity and budget, not a generic template.",
+"ms": "Pelaksanaan sistem digital kitaran penuh, daripada keperluan hingga mula guna, disesuaikan dengan kapasiti operasi dan bajet sebenar, bukan templat umum."
 },
-"f5.h": {
-"en": "Angkasa deduction integration",
-"ms": "Integrasi potongan Angkasa"
+"v4.h": {
+"en": "Business-as-Usual Support",
+"ms": "Sokongan Operasi Harian"
 },
-"f5.p": {
-"en": "Import the monthly Angkasa deduction file and match every payment to the right member, loan and share account automatically. Anything that does not match is flagged for staff to review.",
-"ms": "Import fail potongan bulanan Angkasa dan padankan setiap bayaran kepada ahli, pinjaman dan akaun syer yang betul secara automatik. Apa-apa yang tidak sepadan ditandakan untuk disemak oleh kakitangan."
+"v4.p": {
+"en": "Ongoing support and system enhancements after go-live, flexing with day-to-day operational needs as your organisation and its customer or member base grow.",
+"ms": "Sokongan berterusan dan penambahbaikan sistem selepas mula guna, mengikut keperluan operasi harian seiring pertumbuhan organisasi serta pelanggan atau ahli anda."
 },
-"f6.h": {
-"en": "Pay online",
-"ms": "Bayar dalam talian"
+"v5.h": {
+"en": "Process Re-engineering & Digitalisation",
+"ms": "Penyusunan Semula Proses & Pendigitalan"
 },
-"f6.p": {
-"en": "Members pay fees, share top-ups and loan instalments from their phone with FPX online banking or card. Each payment is recorded in their account with an instant receipt.",
-"ms": "Ahli membayar yuran, tambahan syer dan ansuran pinjaman melalui telefon menggunakan perbankan dalam talian FPX atau kad. Setiap bayaran direkodkan dalam akaun mereka dengan resit serta-merta."
+"v5.p": {
+"en": "We redesign a process before we automate it, so digitalisation removes waste and manual steps rather than simply moving paper forms onto a screen.",
+"ms": "Kami mereka bentuk semula proses sebelum mengautomasikannya, supaya pendigitalan menghapuskan pembaziran dan langkah manual, bukan sekadar memindahkan borang kertas ke skrin."
 },
-"also.h": {
-"en": "Also included",
-"ms": "Turut disediakan"
+"who.h": {
+"en": "Who we work with",
+"ms": "Siapa yang kami bantu"
 },
-"also.1": {
-"en": "Announcements with notifications",
-"ms": "Pengumuman dengan notifikasi"
+"who.1h": {
+"en": "SMEs",
+"ms": "PKS"
 },
-"also.2": {
-"en": "Member help desk and account unlock",
-"ms": "Meja bantuan ahli dan buka kunci akaun"
+"who.1p": {
+"en": "Approvals, records and reporting moved off spreadsheets and paper.",
+"ms": "Kelulusan, rekod dan laporan dipindahkan daripada hamparan dan kertas."
 },
-"also.3": {
-"en": "Staff roles and a full activity log",
-"ms": "Peranan kakitangan dan log aktiviti penuh"
+"who.2h": {
+"en": "Insurance",
+"ms": "Insurans"
 },
-"also.4": {
-"en": "Hosting in Malaysia with daily backups",
-"ms": "Hos di Malaysia dengan sandaran harian"
+"who.2p": {
+"en": "High-volume, claims-adjacent workflows automated end to end.",
+"ms": "Aliran kerja berkaitan tuntutan bervolum tinggi diautomasikan sepenuhnya."
 },
-"also.5": {
-"en": "Request to leave, with open-loan checks",
-"ms": "Permohonan berhenti, dengan semakan pinjaman tertunggak"
+"who.3h": {
+"en": "Koperasi",
+"ms": "Koperasi"
 },
-"also.6": {
-"en": "Receipts and payment history for members",
-"ms": "Resit dan sejarah bayaran untuk ahli"
+"who.3p": {
+"en": "Members, shares, loans, dividends and Angkasa deductions in one platform.",
+"ms": "Ahli, syer, pinjaman, dividen dan potongan Angkasa dalam satu platform."
+},
+"who.4h": {
+"en": "Financial services",
+"ms": "Perkhidmatan kewangan"
+},
+"who.4p": {
+"en": "Systems built around governance, data protection and regulatory reporting.",
+"ms": "Sistem dibina berasaskan tadbir urus, perlindungan data dan pelaporan kawal selia."
+},
+"why.h": {
+"en": "Why it works",
+"ms": "Mengapa ia berkesan"
+},
+"why.p": {
+"en": "We pair hands-on business analysis with delivery discipline. Every engagement starts by mapping your actual processes and regulatory obligations, then automates only what genuinely reduces cost and risk. The result is a system your committee can approve with confidence and your staff can actually run.",
+"ms": "Kami menggabungkan analisis perniagaan secara langsung dengan disiplin penyampaian. Setiap projek bermula dengan memetakan proses sebenar dan kewajipan kawal selia anda, kemudian mengautomasikan hanya perkara yang benar-benar mengurangkan kos dan risiko. Hasilnya, sistem yang boleh diluluskan oleh jawatankuasa dengan yakin dan benar-benar boleh digunakan oleh kakitangan anda."
+},
+"how.h": {
+"en": "How we work",
+"ms": "Cara kami bekerja"
+},
+"how.1h": {
+"en": "Map",
+"ms": "Petakan"
+},
+"how.1p": {
+"en": "We map your actual processes, data and regulatory obligations with the people who do the work.",
+"ms": "Kami memetakan proses, data dan kewajipan kawal selia sebenar bersama mereka yang melakukan kerja tersebut."
+},
+"how.2h": {
+"en": "Redesign",
+"ms": "Reka semula"
+},
+"how.2p": {
+"en": "We remove waste and manual steps first, and agree where automation pays off.",
+"ms": "Kami menghapuskan pembaziran dan langkah manual dahulu, dan bersetuju di mana automasi memberi pulangan."
+},
+"how.3h": {
+"en": "Build and implement",
+"ms": "Bina dan laksana"
+},
+"how.3p": {
+"en": "We deliver in stages, test with your team, train your staff and go live alongside existing processes.",
+"ms": "Kami menyampaikan secara berperingkat, menguji bersama pasukan anda, melatih kakitangan dan mula guna seiring proses sedia ada."
+},
+"how.4h": {
+"en": "Support and improve",
+"ms": "Sokong dan tambah baik"
+},
+"how.4p": {
+"en": "Business-as-usual support and enhancements as your organisation grows.",
+"ms": "Sokongan operasi harian dan penambahbaikan seiring pertumbuhan organisasi anda."
+},
+"kp.h": {
+"en": "Koperasi Digital Operations Platform",
+"ms": "Platform Operasi Digital Koperasi"
+},
+"kp.p": {
+"en": "Our flagship platform for koperasi: everything the office and the board run on, with a mobile app for every member. Modules are switched on in phases, as the koperasi is ready.",
+"ms": "Platform utama kami untuk koperasi: semua yang diperlukan pejabat dan lembaga, dengan aplikasi mudah alih untuk setiap ahli. Modul dihidupkan secara berperingkat, apabila koperasi bersedia."
+},
+"k1": {
+"en": "Member management and registration",
+"ms": "Pengurusan dan pendaftaran ahli"
+},
+"k2": {
+"en": "Share capital and subscriptions",
+"ms": "Modal syer dan yuran"
+},
+"k3": {
+"en": "Statutory nominee records and PDPA consent",
+"ms": "Rekod penama berkanun dan persetujuan PDPA"
+},
+"k4": {
+"en": "Loan applications, accounts and early settlement",
+"ms": "Permohonan, akaun dan penyelesaian awal pinjaman"
+},
+"k5": {
+"en": "Live dividend estimation for the board",
+"ms": "Anggaran dividen secara langsung untuk lembaga"
+},
+"k6": {
+"en": "Angkasa salary deduction integration",
+"ms": "Integrasi potongan gaji Angkasa"
+},
+"k7": {
+"en": "Online payment by FPX",
+"ms": "Bayaran dalam talian melalui FPX"
+},
+"k8": {
+"en": "Member app in BM, English and Tamil",
+"ms": "Aplikasi ahli dalam BM, Inggeris dan Tamil"
+},
+"k9": {
+"en": "Support desk, announcements and audit trail",
+"ms": "Meja bantuan, pengumuman dan jejak audit"
 },
 "div.h": {
 "en": "Try the dividend estimator",
 "ms": "Cuba anggaran dividen"
 },
 "div.p": {
-"en": "Move the rate and watch the payout change. In the DDPM system the same estimate runs on each member's actual average share balance.",
-"ms": "Gerakkan kadar dan lihat bayaran berubah. Dalam sistem DDPM, anggaran yang sama dikira berdasarkan purata baki syer sebenar setiap ahli."
+"en": "Move the rate and watch the payout change. In the platform the same estimate runs on each member's actual share balance, so the board decides faster.",
+"ms": "Gerakkan kadar dan lihat bayaran berubah. Dalam platform, anggaran yang sama dikira berdasarkan baki syer sebenar setiap ahli, supaya lembaga membuat keputusan lebih pantas."
 },
 "div.capital": {
 "en": "Total share capital (RM)",
@@ -211,109 +311,21 @@ window.DDPM_TEXT = {
 "en": "Example figures for illustration.",
 "ms": "Angka contoh untuk ilustrasi."
 },
-"how.h": {
-"en": "From paper to digital in four steps",
-"ms": "Daripada kertas ke digital dalam empat langkah"
-},
-"how.1h": {
-"en": "Free consultation",
-"ms": "Konsultasi percuma"
-},
-"how.1p": {
-"en": "We visit your koperasi, look at your forms and processes, and show you a working demo.",
-"ms": "Kami melawat koperasi anda, meneliti borang dan proses, dan menunjukkan demo sebenar."
-},
-"how.2h": {
-"en": "Set-up and data transfer",
-"ms": "Persediaan dan pemindahan data"
-},
-"how.2p": {
-"en": "We configure the system for your by-laws and move your member and loan records in.",
-"ms": "Kami menyediakan sistem mengikut undang-undang kecil anda dan memindahkan rekod ahli serta pinjaman."
-},
-"how.3h": {
-"en": "Training",
-"ms": "Latihan"
-},
-"how.3p": {
-"en": "Hands-on sessions for office staff and the board, plus simple guides for members.",
-"ms": "Sesi praktikal untuk kakitangan pejabat dan lembaga, serta panduan mudah untuk ahli."
-},
-"how.4h": {
-"en": "Go live with support",
-"ms": "Mula guna dengan sokongan"
-},
-"how.4p": {
-"en": "We launch alongside your paper process and stay with you with local support.",
-"ms": "Kami melancarkan sistem seiring dengan proses kertas anda dan terus memberi sokongan tempatan."
-},
-"who.h": {
-"en": "Made for everyone in the koperasi",
-"ms": "Dibina untuk semua dalam koperasi"
-},
-"who.board.h": {
-"en": "The board",
-"ms": "Lembaga"
-},
-"who.board.p": {
-"en": "Live figures on members, loans and dividends for faster, better-informed decisions.",
-"ms": "Angka terkini tentang ahli, pinjaman dan dividen untuk keputusan yang lebih pantas dan tepat."
-},
-"who.staff.h": {
-"en": "Office staff",
-"ms": "Kakitangan pejabat"
-},
-"who.staff.p": {
-"en": "Less re-typing and chasing: one place for applications, approvals and member questions.",
-"ms": "Kurang menaip semula dan mengejar dokumen: satu tempat untuk permohonan, kelulusan dan pertanyaan ahli."
-},
-"who.member.h": {
-"en": "Members",
-"ms": "Ahli"
-},
-"who.member.p": {
-"en": "Their membership, loans and koperasi news on their own phone, in their own language.",
-"ms": "Keahlian, pinjaman dan berita koperasi di telefon sendiri, dalam bahasa sendiri."
-},
-"case.h": {
-"en": "Koperasi Guru-Guru Sekolah India Perak Berhad",
-"ms": "Koperasi Guru-Guru Sekolah India Perak Berhad"
-},
-"case.p": {
-"en": "A cooperative of more than 1,200 Tamil school teachers moved its membership, loans and member requests online, while the office keeps accepting paper forms.",
-"ms": "Sebuah koperasi dengan lebih 1,200 guru sekolah Tamil memindahkan keahlian, pinjaman dan permintaan ahli ke dalam talian, sementara pejabat masih menerima borang kertas."
-},
-"case.label": {
-"en": "Koperasi we serve",
-"ms": "Koperasi yang kami bantu"
-},
-"case.1": {
-"en": "Member portal, staff portal and public website",
-"ms": "Portal ahli, portal kakitangan dan laman web awam"
-},
-"case.2": {
-"en": "Bahasa Melayu, English and Tamil",
-"ms": "Bahasa Melayu, Inggeris dan Tamil"
-},
-"case.3": {
-"en": "Installable mobile app for members",
-"ms": "Aplikasi mudah alih untuk ahli"
-},
 "contact.h": {
-"en": "Let's digitalise your koperasi",
-"ms": "Mari digitalkan koperasi anda"
+"en": "Let's talk about your operations",
+"ms": "Mari berbincang tentang operasi anda"
 },
 "contact.p": {
-"en": "Tell us about your koperasi and we will arrange a free demo at your office or online.",
-"ms": "Ceritakan tentang koperasi anda dan kami akan mengatur demo percuma di pejabat anda atau dalam talian."
+"en": "A 30-minute conversation is usually enough to scope where automation pays off first.",
+"ms": "Perbualan selama 30 minit biasanya mencukupi untuk mengenal pasti di mana automasi memberi pulangan terlebih dahulu."
 },
 "c.email": {
 "en": "Email",
 "ms": "E-mel"
 },
 "c.phone": {
-"en": "Phone and WhatsApp",
-"ms": "Telefon dan WhatsApp"
+"en": "Phone",
+"ms": "Telefon"
 },
 "c.office": {
 "en": "Office",
@@ -323,29 +335,29 @@ window.DDPM_TEXT = {
 "en": "Your name",
 "ms": "Nama anda"
 },
-"form.koperasi": {
-"en": "Koperasi name",
-"ms": "Nama koperasi"
-},
-"form.members": {
-"en": "Number of members",
-"ms": "Bilangan ahli"
+"form.org": {
+"en": "Organisation",
+"ms": "Organisasi"
 },
 "form.email": {
 "en": "Email",
 "ms": "E-mel"
 },
+"form.phone": {
+"en": "Phone (optional)",
+"ms": "Telefon (pilihan)"
+},
 "form.msg": {
-"en": "What would you like to improve?",
-"ms": "Apa yang ingin anda perbaiki?"
+"en": "Which process would you like to automate?",
+"ms": "Proses mana yang ingin anda automasikan?"
 },
 "form.ph": {
-"en": "For example: loan applications still on paper, dividend calculations in Excel",
-"ms": "Contoh: permohonan pinjaman masih di atas kertas, pengiraan dividen dalam Excel"
+"en": "For example: loan approvals on paper, claims tracked in Excel, member records in files",
+"ms": "Contoh: kelulusan pinjaman di atas kertas, tuntutan dijejak dalam Excel, rekod ahli dalam fail"
 },
 "form.send": {
-"en": "Email our team",
-"ms": "E-mel pasukan kami"
+"en": "Email us",
+"ms": "E-mel kami"
 },
 "form.note": {
 "en": "This opens your email app with the details filled in. Nothing is stored on this website.",
@@ -356,7 +368,7 @@ window.DDPM_TEXT = {
 "ms": "Sila isi nama, e-mel yang sah dan mesej anda."
 },
 "foot.tag": {
-"en": "Digitalising koperasi across Malaysia",
-"ms": "Mendigitalkan koperasi di seluruh Malaysia"
+"en": "Digital platforms and business process automation for SMEs and financial services",
+"ms": "Platform digital dan automasi proses perniagaan untuk PKS dan perkhidmatan kewangan"
 }
 };

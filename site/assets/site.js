@@ -88,7 +88,7 @@
     err.hidden = true;
     const subject = `Enquiry: ${(f.org || '').trim() || f.name.trim()}`;
     const body = `${f.message.trim()}\n\nName: ${f.name.trim()}\nOrganisation: ${(f.org || '').trim() || '-'}\nPhone: ${(f.phone || '').trim() || '-'}\nEmail: ${f.email.trim()}`;
-    window.location.href = `mailto:Kumaravel@ddpm.com.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:Info@ddpm.com.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
   // ---------- start ----------
